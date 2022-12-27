@@ -114,9 +114,6 @@ For implementing this feature, you will need to do the following:
 
 Expected result should be like following video:
 
-<video width="320" height="240" controls>
-  <source src="./requirements/task-2.mkv" type="video/mp4">
-Your browser does not support the video tag. Check the video in `requirements/task-2.mkv`
-</video>
+<video src='./requirements/task-2.mkv' width=640 controls/>
 
 Here, both the patients table (on right) and the banner (on left) are launched inside iframes.
