@@ -114,6 +114,6 @@ For implementing this feature, you will need to do the following:
 
 Expected result should be like following video:
 
-![Task 2](./requirements/task-2.mkv)
+[![Task 2](./requirements/task-2.png)](./requirements/task-2.mkv)
 
 Here, both the patients table (on right) and the banner (on left) are launched inside iframes.
