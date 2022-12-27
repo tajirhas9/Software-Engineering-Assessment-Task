@@ -112,8 +112,6 @@ For implementing this feature, you will need to do the following:
 - Populate the patients table with patient information from the database. (Currently, it gets populated with static dummy data). Note that, you need to make API call inside Vue framework, the iFrame should then be able to access the patients list from the vue component. Do not introduce any API call inside the iframes. See how devices list is being fetched. You will have to fetch the patients list in the same way to maintain consistency in the codebase. After the fetch is complete, the iframe should be able to access that patients list and populate the table.
 - On double clicking any row, update the banner. (`banner/index.html`)
 
-Expected result should be like following video:
-
-<video src='./requirements/task-2.mkv' width=640 controls/>
+Expected result should be like [this video](./requirements/task-2.mkv)
 
 Here, both the patients table (on right) and the banner (on left) are launched inside iframes.
