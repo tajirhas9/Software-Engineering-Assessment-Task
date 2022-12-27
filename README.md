@@ -89,21 +89,30 @@ Your product manager has given the developer team a new requirement to introduce
 The authentication system requires the website to have:
 
 - Sign up page for the new user
-- New user needs to verify their email before accessing other APIs to get data
+- New user needs to verify their email (with `Request Verification` API) before accessing other APIs to get data
 - Login page
 - Redirect to homepage if already logged in.
 - Redirect to login page _i.e_ cannot access any other page other than Login and Sign up page if user is not authorized.
 
 So, for implementing this feature, You will need to do the following:
 
-- Introduce a new Sign up page and create a new user on successful sign up.
-- Introduce a new login page and authorize user.
+- Introduce a new Sign up page and create a new user on successful sign up (with `Sign Up` API).
+- Introduce a new login page and authorize user (with `Login` API).
 - Introduce a navigation guard in the router so that user is not able to access authorized pages without login _i.e._ he will be redirected to login page if unauthorized.
+
+Optional feature:
+
+- Introduce Forget password feature
 
 ### Second Task
 
 There are two vanilla webpages in the old codebase that needs to be introduced in the new codebase. One is the patients list page (`Old Codebase/patients/index.html`) and another is the banner (`Old Codebase/banner/index.html`). You need to directly add these webpages as `iframe` in the current project. Due to configuration issues, you cannot re-implement the pages in vue from scratch.
 In the older codebase, how those two webpages communicated was, whenever you double click any row of the patients list table, the banner would update the 'Selected Patient' with the selected patient from `patients/index.html` page. You need to introduce this functionality in the current codebase.
+
+So, in short, you have to introduce the following features:
+
+1. Add both the webpages as `iframe` in the HomeView
+2. Create a inter-communication system between the webpages in `iframe` via the Vue framework.
 
 For implementing this feature, you will need to do the following:
 
