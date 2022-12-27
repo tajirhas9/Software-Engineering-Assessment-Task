@@ -11,7 +11,7 @@
 <script setup lang="ts">
 	import DeviceList from '@/components/DeviceList.vue'
 	import { DevicesModuleAction } from '@/store/modules/devices/types'
-	import { computed, onMounted } from 'vue'
+	import { computed } from 'vue'
 	import { useStore } from 'vuex'
 
 	let store = useStore()
