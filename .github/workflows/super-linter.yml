@@ -25,7 +25,8 @@ jobs:
 
       - name: Lint Code Base
         uses: creyD/prettier_action@v4.2
-        # env:
-        #   VALIDATE_ALL_CODEBASE: false
-        #   DEFAULT_BRANCH: 'main'
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          prettier_options: --write **/*.{ts,vue,js,md,css,scss}
+          only_changed: True
+          # Set your custom token
+          github_token: ${{ secrets.GITHUB_TOKEN }}
