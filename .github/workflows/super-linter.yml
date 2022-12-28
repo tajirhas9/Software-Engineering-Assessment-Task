@@ -18,12 +18,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
       - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: 'main'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: creyD/prettier_action@v4.2
+        # env:
+        #   VALIDATE_ALL_CODEBASE: false
+        #   DEFAULT_BRANCH: 'main'
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
