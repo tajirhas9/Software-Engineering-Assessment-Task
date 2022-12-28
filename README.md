@@ -12,7 +12,7 @@
 
 ## Introduction
 
-Welcome to the Technical Assessment Test. In this test, you will be given some requirements that will have to be implemented. You will be working on a sandbox project with specific scenerio that matches the tasks assigned. Please be aware that this codebase contains very minimalistic features and does not intend to overwhelm with unncessary complexity. The main purpose of a pre-given codebase is to provide a reference on the best practices followed in Vue.js. Although we are not expecting any candiate to have any prior experience in a very specific framework, having good analytical skill, being comfortable in understanding legacy codebase and ability to comprehend requirements clearly are must while working in a professional environment. That is why, we are providing you with the codebase and your task is to understand the codebase and implement the requirements inside it by maintaining the best practices followed here.
+Welcome to the Technical Assessment Test. In this test, you will be given some requirements that will have to be implemented. You will be working on a sandbox project with specific scenerio that matches the tasks assigned. Please be aware that this codebase contains very minimalistic features and does not intend to overwhelm with unncessary complexity. The main purpose of a pre-given codebase is to provide a reference on the best practices followed in Vue.js. Although we are not expecting any candiate to have any prior experience in a very specific framework, having good analytical skill, being comfortable in understanding legacy codebase and ability to comprehend requirements clearly are must while working in a professional environment. Your task is to understand the codebase and implement the requirements by maintaining the best practices followed here.
 
 ## Tutorial Links
 
@@ -81,7 +81,7 @@ npm run lint
 
 ### Background
 
-Your company has decided to migrate its old codebase to a new tech stack. Previously, they used vanilla JavaScript since the older codebase ages back before even [Node.js](https://nodejs.org/) was a thing. But the problem is, migrations are not that easy to accomplish. In an ideal world, you would expect to migrate the whole project to the new stack and then use it. But, since your company is already in production, they cannot afford it. They need to introduce simple changes at a time to adapt the new product in the market. So, you are currently in that phase of migration where the new codebase is gradually getting updated, but it still supports older codebase features in some cases.
+Your company has decided to migrate its old codebase to a new tech stack. Previously, they used vanilla JavaScript since the older codebase ages back before even [Node.js](https://nodejs.org/) was a thing. But the problem is, migrations are not that easy to accomplish. In an ideal world, you would expect to migrate the whole project to the new stack and then use it. But, Your company doesn't have enough time since it is already in production. They need to introduce simple changes at a time to adapt the new product in the market. So, you are currently in that phase of migration where the new codebase is gradually getting updated, but it still supports older codebase features in some cases.
 
 ### First Task
 
@@ -118,7 +118,7 @@ For implementing this feature, you will need to do the following:
 
 - Remove the sample component from the Home view.
 - Add both of the webpages (`patients/index.html` and `banner/index.html`) as `iframe` in the Home view.
-- Populate the patients table with patient information from the database. (Currently, it gets populated with static dummy data). Note that, you need to make API call inside Vue framework, the iFrame should then be able to access the patients list from the vue component. Do not introduce any API call inside the iframes. See how devices list is being fetched. You will have to fetch the patients list in the same way to maintain consistency in the codebase. After the fetch is complete, the iframe should be able to access that patients list and populate the table.
+- Populate the patients table with patient information from the database. (Currently, it gets populated with static dummy data. Change it to support the requirement). Note that, you need to make API call inside Vue framework, the iFrame should then be able to access the patients list from the vue component. **Do not introduce any API call inside the iframes. See how devices list is being fetched. You will have to fetch the patients list in the same way to maintain consistency in the codebase.** After the fetch is complete, the iframe should be able to access that patients list and populate the table.
 - On double clicking any row, update the banner. (`banner/index.html`)
 
 Expected result should be like [this video](./requirements/task-2.mkv)
