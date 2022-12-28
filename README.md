@@ -125,4 +125,4 @@ Expected result should be like [this video](./requirements/task-2.mkv)
 
 Here, both the patients table (on right) and the banner (on left) are launched inside iframes.
 
-N.B.: Please maintain proper commit messages in your forked repository and maintain as much Git best practices as possible.
+_N.B.: Please maintain proper commit messages in your forked repository and maintain as much Git best practices as possible._
