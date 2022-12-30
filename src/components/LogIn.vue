@@ -1,54 +1,42 @@
 <template>
-
     <div>
-
-       <form action="">
+        <form action="">
             <h1>Login</h1>
             
             <input type="email" name="" placeholder="Email">
-            <input type="password" name="" placeholder="Password">
+            <input type="password" name="" placeholder="Password" >
             <button type="submit">Log In</button>
         
             <p>Or</p>
         
             <div class="login">
-            <p><a href="">Creat Account</a></p>
+            <router-link to="/Signup">Create Account</router-link>
             </div>
         
         
         </form>
-
     </div>
-
 </template>
 
-
-
-<script lang="ts">
+<script >
 export default {
     name: 'SoftwareEngineeringAssessmentTaskLoginPage',
-
-    data() {
+    data () {
         return {
-            
+            userData: {
+                Email:null,
+                Password:null
+            },
+            isSubmitted: false
         };
     },
 
-    mounted() {
-        
-    },
-
-    methods: {
-        
-    },
-};
+}
+    
 </script>
 
-
-
-<style lang="scss" scoped>
-
-        body{
+<style scoped>
+ body{
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -56,7 +44,7 @@ export default {
         }
 
         form {
-            margin-top: 120px;
+            margin-top:none;
             text-align: center;
             background: transparent;
             width: 300px;
@@ -87,6 +75,5 @@ export default {
             color: white;
             cursor: pointer;
         }
-
 
 </style>'

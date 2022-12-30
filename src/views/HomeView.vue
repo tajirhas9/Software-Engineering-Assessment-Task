@@ -4,11 +4,17 @@
 		<div class="device-section">
 			<device-list v-if="isDevicesLoaded" />
 			<button @click="load" v-else>Load Devices</button>
+			<p>
+				<router-link to="/Login">Login</router-link>
+				<label><br></label>
+				<router-link to="/Signup">Signup</router-link>
+			</p>
 		</div>
 	</main>
 </template>
 
 <script setup lang="ts">
+
 	import DeviceList from '@/components/DeviceList.vue'
 	import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
@@ -33,7 +39,7 @@
 
 <style scoped>
 	main {
-		margin: auto;
+		margin:none;
 	}
 
 	h1 {
@@ -61,4 +67,5 @@
 		max-height: 100vh;
 		max-width: 100vw;
 	}
+	
 </style>

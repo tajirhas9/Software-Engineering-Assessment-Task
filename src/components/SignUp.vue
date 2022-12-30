@@ -11,17 +11,17 @@
         <button type="submit">Sign Up</button>
 
     </form>
-        
     </div>
+
 </template>
 
-<script lang="ts">
+<script>
 export default {
     name: 'SoftwareEngineeringAssessmentTaskSignUp',
 
     data() {
         return {
-            
+
         };
     },
 
@@ -30,12 +30,11 @@ export default {
     },
 
     methods: {
-        
     },
 };
 </script>
 
-<style lang="scss" scoped>
+ <style  scoped>
 
  body{
             display: flex;
@@ -45,7 +44,7 @@ export default {
         }
 
         form{
-            margin-top: 50px;
+            margin-top:none;
             text-align: center;
         }
 
