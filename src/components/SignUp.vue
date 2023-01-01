@@ -1,26 +1,35 @@
 <template>
     <div>
 
-        <form action="">
+        <form action="" @submit.prevent="OnSignup">
         <h1>Sign Up</h1>
-        <input type="text" name="" placeholder="First Name">
-        <input type="text" name="" placeholder="Last Name">
-        <input type="email" name="" placeholder="Email">
-        <input type="password" name=""  placeholder="Password">
-        <input type="password" name="" placeholder="Confirm password">
+        <input type="text" name="" placeholder="Userame" v-model="Userdata.username" required>
+        <input type="text" name="" placeholder="Fast Name" v-model="Userdata.name" required>
+        <input type="email" name="" placeholder="Email" v-model="Userdata.email" required>
+        <input type="password" name=""  placeholder="Password" v-model="Userdata.password" required>
+        <input type="password" name="" placeholder="Confirm password" v-model="Userdata.passwordConfirm" required>
         <button type="submit">Sign Up</button>
 
     </form>
+        
     </div>
-
 </template>
 
-<script>
+<script lang="ts" >
+    import axios from 'axios';
 export default {
     name: 'SoftwareEngineeringAssessmentTaskSignUp',
 
     data() {
         return {
+            Userdata: {
+            username:'',
+            email:'',
+            emailVisibility: true,
+            password:'',
+            passwordConfirm:'',
+            name:''
+            },
 
         };
     },
@@ -30,9 +39,42 @@ export default {
     },
 
     methods: {
+        OnSignup() {
+            console.log(this.Userdata);
+
+            var mailformat = /\S+@\S+\.\S+/;
+
+            if (!this.Userdata.name) {  //check name
+                alert("Name Can't be empty");
+                return;
+            }
+             if (!this.Userdata.username) {  //check user nane 
+                alert("User Name Can't be empty");
+                return;
+            }
+            if (!this.Userdata.email || !this.Userdata.email.match(mailformat)) {  // check email is correct r not 
+                
+                alert("Email is not valid");
+                return;
+            }
+            if (this.Userdata.password !== this.Userdata.passwordConfirm) { //check both pass and confirm pass are match or not 
+                alert('Password is not Correct')
+                return;
+            }
+            else {
+                  axios.post('http://23.94.211.99:8090/api/collections/candidates/records',this.Userdata) //Sign up api call from here
+                    .then((response) => console.log(response))
+                    .catch(error=> console.log(error))
+                //todo api call
+                return;
+            }
+        }
     },
 };
+
+
 </script>
+
 
  <style  scoped>
 
@@ -44,7 +86,7 @@ export default {
         }
 
         form{
-            margin-top:none;
+            margin-top: 50px;
             text-align: center;
         }
 

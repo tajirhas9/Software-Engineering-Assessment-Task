@@ -1,10 +1,10 @@
 <template>
     <div>
-        <form action="">
+        <form action="#" @submit.prevent="OnLogin">
             <h1>Login</h1>
             
-            <input type="email" name="" placeholder="Email">
-            <input type="password" name="" placeholder="Password" >
+            <input type="email" name="" placeholder="Email" v-model="userData.identity">
+            <input type="password" name="" placeholder="Password" v-model="userData.password" required>
             <button type="submit">Log In</button>
         
             <p>Or</p>
@@ -16,23 +16,56 @@
         
         </form>
     </div>
+  
 </template>
 
-<script >
+<script lang="ts" >
+import axios from 'axios'
+    
 export default {
     name: 'SoftwareEngineeringAssessmentTaskLoginPage',
-    data () {
+
+    data() {
         return {
             userData: {
-                Email:null,
-                Password:null
+                identity:'',
+                password:''
             },
-            isSubmitted: false
         };
     },
 
+    mounted() {
+        
+    },
+
+    methods: {
+         OnLogin() {
+            console.log(this.userData);
+            let valmail = /\S+@\S+\.\S+/;
+
+             
+            if (!this.userData.identity || !this.userData.identity.match(valmail)) {// check email is correct or not
+                
+                alert("Email is not valid");
+                return;
+            }
+
+            if (this.userData.password.length<8) {
+                alert('Password must be at least 8 character long'); // check password is greater the=an 8 character
+                return;
+            }
+
+            else {
+                axios.post('http://23.94.211.99:8090/api/collections/candidates/auth-with-password',this.userData) //Login API call from here
+                    .then((response) => console.log(response))
+                    .catch(error=> console.log(error))
+                //todo api call
+                return;
+            }
+        }
+    },
+
 }
-    
 </script>
 
 <style scoped>
@@ -44,7 +77,7 @@ export default {
         }
 
         form {
-            margin-top:none;
+            margin-top: 120px;
             text-align: center;
             background: transparent;
             width: 300px;
