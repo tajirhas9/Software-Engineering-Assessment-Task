@@ -1,11 +1,5 @@
 <template>
-	<main>
-		<h1>Welcome to Software Engineer Technical Assessment</h1>
-		<div class="device-section">
-			<device-list v-if="isDevicesLoaded" />
-			<button @click="load" v-else>Load Devices</button>
-		</div>
-	</main>
+	<H1> HI </H1>
 </template>
 
 <script setup lang="ts">
