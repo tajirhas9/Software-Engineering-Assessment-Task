@@ -1,5 +1,13 @@
 <template>
 	<main>
+		<nav class = "navbar">
+      	<ul>
+			<router-link to="/LogIn">Login</router-link>
+			<a href ="#">|</a>
+        	<router-link to="/SignUp">SignUp</router-link>
+      	</ul>
+    	</nav>
+
 		<h1>Welcome to Software Engineer Technical Assessment</h1>
 		<div class="device-section">
 			<device-list v-if="isDevicesLoaded" />
@@ -29,6 +37,7 @@
 	const load = () => {
 		store.dispatch(DevicesModuleAction.GetDevices)
 	}
+
 </script>
 
 <style scoped>
@@ -61,4 +70,19 @@
 		max-height: 100vh;
 		max-width: 100vw;
 	}
+
+	.navbar {
+    	list-style-type:none;
+        margin: 0px;
+        padding: 0;
+        width: auto;
+        font-size: x-large;
+   } 
+  
+  nav ul {
+    list-style:none;
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
 </style>

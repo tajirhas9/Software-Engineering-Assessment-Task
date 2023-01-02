@@ -15,6 +15,11 @@ module.exports = {
 			extends: ['plugin:cypress/recommended'],
 		},
 	],
+	rules: {
+		'prettier/prettier': 'off' 
+
+	},
+
 	parserOptions: {
 		ecmaVersion: 'latest',
 	},

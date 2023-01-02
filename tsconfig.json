@@ -1,5 +1,6 @@
 {
   "files": [],
+  
   "references": [
     {
       "path": "./tsconfig.config.json"
@@ -11,4 +12,6 @@
       "path": "./tsconfig.vitest.json"
     }
   ]
+  
 }
+

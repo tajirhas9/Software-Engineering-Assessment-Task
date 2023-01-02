@@ -7,6 +7,7 @@
 		"hollowtree.vue-snippets",
 		"redhat.vscode-xml",
 		"aaron-bond.better-comments",
-		"gruntfuggly.todo-tree"
+		"gruntfuggly.todo-tree",
+		"mccarter.start-git-bash"
 	]
 }

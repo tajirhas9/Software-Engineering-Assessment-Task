@@ -29,7 +29,7 @@ const defaultConfig = {
 	server: {
 		proxy: {
 			'^/api/.*': {
-				target: 'API_HERE', // TODO: Update the api
+				target: 'https://schema.postman.com/json/collection/v2.1.0/collection.json', // TODO: Update the api
 				changeOrigin: true,
 				secure: false,
 				ws: true,
