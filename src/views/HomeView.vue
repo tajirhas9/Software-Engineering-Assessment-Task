@@ -19,10 +19,12 @@
 
 <script>
 	let namo = 'dhur'
+	let arr = ['a', 'b', 'c']
 	import DeviceList from '@/components/DeviceList.vue'
 	import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
 	import { useStore } from 'vuex'
+	import axios from 'axios'
 
 	let store = useStore()
 
@@ -45,32 +47,50 @@
 			return {
 				name: 'Rafo',
 				TableHtml: `<h1 style="color: white">
-					<table border=1> 
-						<tr> 
-							<th> 
-								Patients 
-							</th> 
-						    <th> 
-								Email
-							</th>
-							 <th>
-								 Phone 
-							</th>
-						</tr>
-						<tr>
-							<td> first Pat</td>
-							<td> 123@gmail.com </td>
-							<td> 0162762 </td>
-						</tr>
-						<tr>
-						<td> Second Patient </td>
-							<td> example@gmail.com </td>
-							<td> 01712233367 </td>	
+						<table border=1>
+							<tr>
+								<th>
+									Patients
+								</th>
+							    <th>
+									Email
+								</th>
+								 <th>
+									 Phone
+								</th>
 							</tr>
-							</h1> `,
+							<tr>
+								<td>Rafi </td>
+								<td> 123@gmail.com </td>
+								<td> 0162762 </td>
+							</tr>
+							<tr>
+							<td> Second Patient </td>
+								<td> example@gmail.com </td>
+								<td> 01712233367 </td>
+								</tr>
+								</h1> `,
 				GotHtml: '<h1 style="color: white"> This Patient is selected</h1>',
 				HeadHtml: `<h1 style="color:white"><p align="center"> Welcome to Software Engineer Technical Assessment</p></h1>`,
 			}
+		},
+		methods: {
+			async load() {
+				let result = await axios
+					.get('http://localhost:3000/patients/records')
+					.then((res) => {
+						console.warn(res.data[0].name)
+					})
+					.catch((err) => {
+						console.warn(err)
+					})
+				for (let i in result) {
+					console.warn(i.name)
+				}
+			},
+		},
+		beforeMount() {
+			this.load()
 		},
 	}
 </script>
