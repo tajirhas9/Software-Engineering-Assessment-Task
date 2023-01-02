@@ -1,26 +1,24 @@
 <template>
-    <div>
-        <form action="#" @submit.prevent="OnLogin">
-            <h1>Login</h1>
-            
-            <input type="email" name="" placeholder="Email" v-model="userData.identity">
-            <input type="password" name="" placeholder="Password" v-model="userData.password" required>
-            <button type="submit">Log In</button>
-        
-            <p>Or</p>
-        
-            <div class="login">
-            <router-link to="/Signup">Create Account</router-link>
-            </div>
-        
-        
-        </form>
-    </div>
-  
+	<div>
+		<form action="#" @submit.prevent="OnLogin">
+			<h1>Login</h1>
+
+			<input type="email" name="" placeholder="Email" v-model="userData.identity" />
+			<input type="password" name="" placeholder="Password" v-model="userData.password" required />
+			<button type="submit">Log In</button>
+
+			<p>Or</p>
+
+			<div class="login">
+				<router-link to="/Signup">Create Account</router-link>
+			</div>
+		</form>
+	</div>
 </template>
 
 <script lang="ts" >
 import axios from 'axios'
+import router from 'vue-router'
     
 export default {
     name: 'SoftwareEngineeringAssessmentTaskLoginPage',
@@ -31,6 +29,7 @@ export default {
                 identity:'',
                 password:''
             },
+            Token:'',
         };
     },
 
@@ -39,7 +38,8 @@ export default {
     },
 
     methods: {
-         OnLogin() {
+        OnLogin() {
+            
             console.log(this.userData);
             let valmail = /\S+@\S+\.\S+/;
 
@@ -57,8 +57,17 @@ export default {
 
             else {
                 axios.post('http://23.94.211.99:8090/api/collections/candidates/auth-with-password',this.userData) //Login API call from here
-                    .then((response) => console.log(response))
-                    .catch(error=> console.log(error))
+                    .then((response)=>{
+                        console.log(response)
+                        this.Token = response.data.token
+                        //console.log(this.$router)
+                        console.log(this.Token);
+                        this.$toast.show(`Successfully Login!!!`);
+
+                        this.$router.push("/home")
+                        
+                    })
+                    .catch(error=> alert('Invalid Email or Password'))
                 //todo api call
                 return;
             }
@@ -69,44 +78,43 @@ export default {
 </script>
 
 <style scoped>
- body{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }
+body {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+}
 
-        form {
-            margin-top: 120px;
-            text-align: center;
-            background: transparent;
-            width: 300px;
-            height: 350px;
-            border: 1px solid;
-            border-radius: 10px;
-            outline: none;
-        }
+form {
+	margin-top: 120px;
+	text-align: center;
+	background: transparent;
+	width: 300px;
+	height: 350px;
+	border: 1px solid;
+	border-radius: 10px;
+	outline: none;
+}
 
-        input {
-            margin-top: 20px;
-            width: 210px;
-            border-radius: 20px;
-            outline: none;
-            padding: 10px;
-            background: transparent;
-            border: 1px solid;
-        }
+input {
+	margin-top: 20px;
+	width: 210px;
+	border-radius: 20px;
+	outline: none;
+	padding: 10px;
+	background: transparent;
+	border: 1px solid;
+}
 
-        button {
-            margin-top: 20px;
-            width: 150px;
-            border-radius: 30px;
-            outline: none;
-            padding: 10px;
-            background: linear-gradient(#4c77d3, #5c7fc9);
-            border:none;
-            color: white;
-            cursor: pointer;
-        }
-
+button {
+	margin-top: 20px;
+	width: 150px;
+	border-radius: 30px;
+	outline: none;
+	padding: 10px;
+	background: linear-gradient(#4c77d3, #5c7fc9);
+	border: none;
+	color: white;
+	cursor: pointer;
+}
 </style>'

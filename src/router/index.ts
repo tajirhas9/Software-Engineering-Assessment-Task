@@ -5,24 +5,28 @@ import signup from '@/components/SignUp.vue'
 
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
+
 	routes: [
 		{
-			path: '/',
+			path: '/home',
 			name: 'home',
 			component: HomeView,
 		},
 
 		{
-			path: '/Login',
+			path: '/',
 			name: 'login',
-			component:login,
+			component: login,
+			
 		},
-		 {
+
+		{
 
 			path: '/Signup',
 			name: 'signup',
 			component: signup,
 		},
+		
 		
 	],
 })

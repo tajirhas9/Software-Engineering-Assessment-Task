@@ -10,13 +10,15 @@
         <input type="password" name="" placeholder="Confirm password" v-model="Userdata.passwordConfirm" required>
         <button type="submit">Sign Up</button>
 
-    </form>
+        </form>
         
     </div>
 </template>
 
-<script lang="ts" >
-    import axios from 'axios';
+<script lang="ts">
+
+import axios from 'axios';
+import router from 'vue-router'
 export default {
     name: 'SoftwareEngineeringAssessmentTaskSignUp',
 
@@ -48,7 +50,7 @@ export default {
                 alert("Name Can't be empty");
                 return;
             }
-             if (!this.Userdata.username) {  //check user nane 
+             if (!this.Userdata.username) {  //check user name 
                 alert("User Name Can't be empty");
                 return;
             }
@@ -63,8 +65,13 @@ export default {
             }
             else {
                   axios.post('http://23.94.211.99:8090/api/collections/candidates/records',this.Userdata) //Sign up api call from here
-                    .then((response) => console.log(response))
-                    .catch(error=> console.log(error))
+                      .then((response) => {
+                        this.$toast.show(` Account Create Successfully Please Login.`)
+                        this.$router.push('/')
+                    })
+                      .catch(error => {
+                          alert("The email is invalid or already in use.")
+                      })
                 //todo api call
                 return;
             }
