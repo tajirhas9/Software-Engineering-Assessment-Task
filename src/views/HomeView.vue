@@ -1,8 +1,24 @@
 <template>
-	<H1> HI </H1>
+	<body>
+		<div style="width: 1125px">
+			<div style="float: center,margin-bottom: 30px">
+				<iframe width="1260px" height="315px" :srcdoc="HeadHtml" frameborder="1" allowfullscreen></iframe>
+			</div>
+
+			<div style="float: right">
+				<iframe width="560px" height="315px" :srcdoc="TableHtml" frameborder="1" allowfullscreen></iframe>
+			</div>
+			<div style="float: left">
+				<iframe width="560px" height="315px" :srcdoc="GotHtml" frameborder="1" allowfullscreen></iframe>
+			</div>
+
+			<div style="clear: both"></div>
+		</div>
+	</body>
 </template>
 
-<script setup lang="ts">
+<script>
+	let namo = 'dhur'
 	import DeviceList from '@/components/DeviceList.vue'
 	import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
@@ -23,21 +39,62 @@
 	const load = () => {
 		store.dispatch(DevicesModuleAction.GetDevices)
 	}
+	export default {
+		name: 'App',
+		data() {
+			return {
+				name: 'Rafo',
+				TableHtml: `<h1 style="color: white">
+					<table border=1> 
+						<tr> 
+							<th> 
+								Patients 
+							</th> 
+						    <th> 
+								Email
+							</th>
+							 <th>
+								 Phone 
+							</th>
+						</tr>
+						<tr>
+							<td> first Pat</td>
+							<td> 123@gmail.com </td>
+							<td> 0162762 </td>
+						</tr>
+						<tr>
+						<td> Second Patient </td>
+							<td> example@gmail.com </td>
+							<td> 01712233367 </td>	
+							</tr>
+							</h1> `,
+				GotHtml: '<h1 style="color: white"> This Patient is selected</h1>',
+				HeadHtml: `<h1 style="color:white"><p align="center"> Welcome to Software Engineer Technical Assessment</p></h1>`,
+			}
+		},
+	}
 </script>
 
 <style scoped>
+	body,
+	html {
+		height: 100%;
+		widows: 100%;
+	}
+	body {
+		background-color: black;
+	}
+
 	main {
 		margin: auto;
 	}
 
 	h1 {
+		margin-top: 20px;
+		margin-left: 180px;
+		color: aliceblue;
 		margin-bottom: 10rem;
 		text-align: center;
-	}
-
-	.device-section {
-		margin: auto;
-		max-width: fit-content;
 	}
 
 	button {
@@ -48,11 +105,13 @@
 		background-color: var(--vt-c-primary);
 		cursor: pointer;
 	}
-
+	p {
+		color: white;
+	}
+	.visible {
+		color: aliceblue;
+	}
 	iframe {
-		min-height: 30vh;
-		min-width: 30vw;
-		max-height: 100vh;
-		max-width: 100vw;
+		color: aliceblue;
 	}
 </style>
