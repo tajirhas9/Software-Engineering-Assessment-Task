@@ -29,7 +29,7 @@ const defaultConfig = {
 	server: {
 		proxy: {
 			'^/api/.*': {
-				target: 'API_HERE', // TODO: Update the api
+				target: 'http://localhost:3000', // TODO: Update the api
 				changeOrigin: true,
 				secure: false,
 				ws: true,

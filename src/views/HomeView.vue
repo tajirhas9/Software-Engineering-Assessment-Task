@@ -8,7 +8,7 @@
 	</main>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 	import DeviceList from '@/components/DeviceList.vue'
 	import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
@@ -28,6 +28,14 @@
 
 	const load = () => {
 		store.dispatch(DevicesModuleAction.GetDevices)
+	}
+	export default {
+		mounted() {
+			let user = localStorage.getItem('user-info')
+			if (!user) {
+				this.$router.push({ name: 'signup' })
+			}
+		},
 	}
 </script>
 
