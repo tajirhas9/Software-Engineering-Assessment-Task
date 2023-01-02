@@ -2,18 +2,19 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import SignUp from '@/components/SignUp.vue'
 import LogIn from '@/components/LogIn.vue'
+import NavBar from '@/components/NavBar.vue'
 
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
-			path: '/',
+			path: '/home',
 			name: 'home',
 			component: HomeView,
 		},
 
 		{
-			path: '/LogIn',
+			path: '/Login',
 			name: 'Login',
 			component: LogIn,
 		},
@@ -22,6 +23,12 @@ const router = createRouter({
 			path: '/SignUp',
 			name: 'SignUp',
 			component: SignUp,
+		},
+
+		{
+			path: '/',
+			name: 'navbar',
+			component: NavBar,
 		},
 	],
 })

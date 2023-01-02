@@ -1,42 +1,38 @@
 <template>
 	<main>
-		<nav class = "navbar">
-      	<ul>
-			<router-link to="/LogIn">Login</router-link>
-			<a href ="#">|</a>
-        	<router-link to="/SignUp">SignUp</router-link>
-      	</ul>
-    	</nav>
-
 		<h1>Welcome to Software Engineer Technical Assessment</h1>
-		<div class="device-section">
+		<!--<div class="device-section">
 			<device-list v-if="isDevicesLoaded" />
 			<button @click="load" v-else>Load Devices</button>
+		</div>-->
+		<div>
+			<ifrmae src="http://127.0.0.1:5500/patients/index.html"></ifrmae>
+			<iframe src="http://127.0.0.1:5500/banner/index.html"></iframe>
 		</div>
 	</main>
 </template>
 
 <script setup lang="ts">
-	import DeviceList from '@/components/DeviceList.vue'
-	import { DevicesModuleAction } from '@/store/modules/devices/types'
+	//<import DeviceList from '@/components/DeviceList.vue'
+	//import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
 	import { useStore } from 'vuex'
 
-	let store = useStore()
+	//let store = useStore()
 
-	let devices = computed(() => store.getters.devices)
+	//let devices = computed(() => store.getters.devices)
 
-	let isDevicesLoaded = computed(() => {
-		try {
-			return devices.value.length > 0
-		} catch (e) {
-			return false
-		}
-	})
+	//let isDevicesLoaded = computed(() => {
+	//	try {
+	//		return devices.value.length > 0
+	//	} catch (e) {
+	//		return false
+	//	}
+	//})
 
-	const load = () => {
-		store.dispatch(DevicesModuleAction.GetDevices)
-	}
+	//const load = () => {
+	//	store.dispatch(DevicesModuleAction.GetDevices)
+	//}
 
 </script>
 
@@ -71,18 +67,4 @@
 		max-width: 100vw;
 	}
 
-	.navbar {
-    	list-style-type:none;
-        margin: 0px;
-        padding: 0;
-        width: auto;
-        font-size: x-large;
-   } 
-  
-  nav ul {
-    list-style:none;
-    display: flex;
-    justify-content: center;
-    width: auto;
-  }
 </style>

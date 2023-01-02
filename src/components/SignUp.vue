@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts">
+import router from 'vue-router'
 import axios from 'axios'
 export default {
 
@@ -45,10 +46,15 @@ export default {
 
       else{
         axios.post('http://23.94.211.99:8090/api/collections/candidates/records',this.UserInfo)
-        .then((response)=> console.log(response)
-      )
-      .catch((error)=> console.log(error)
-      )
+        .then((response)=> {
+          console.log(response)
+          this.$router.push("/login")
+        })
+      .catch((e)=> {
+          console.log(e)
+          alert("Invalid Email or Already Used")
+      })
+      return;
       }
     }
   }

@@ -11,6 +11,7 @@
   </template>
   
   <script lang="ts">
+  import router from 'vue-router'
   import axios from 'axios'
   export default {
   
@@ -39,15 +40,17 @@
 
       else{
         axios.post('http://23.94.211.99:8090/api/collections/candidates/auth-with-password',this.UserInfo)
-        .then((response)=> console.log(response)
+        .then((response)=>{
+          console.log(response)
+          this.$router.push("/home")
+        })
+      .catch((error)=> alert("Invalid Email or Password")
       )
-      .catch((error)=> console.log(error)
-      )
+      return
       }
-
+      }
     }
-  }
-} 
+  } 
   </script>
   
   <style scoped>
