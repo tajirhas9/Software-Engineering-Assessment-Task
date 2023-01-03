@@ -66,7 +66,7 @@ export default {
             else {
                   axios.post('http://23.94.211.99:8090/api/collections/candidates/records',this.Userdata) //Sign up api call from here
                       .then((response) => {
-                        this.$toast.show(` Account Create Successfully Please Login.`)
+                        this.$toast.show(` Account Create Successfully Login Please.`)
                         this.$router.push('/')
                     })
                       .catch(error => {

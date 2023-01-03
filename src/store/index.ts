@@ -1,12 +1,14 @@
 import { createStore } from 'vuex'
 import type { IModule as IDevicesModule } from './modules/devices/types'
+import type { IModule as IPatientsModule } from './modules/patients/types'
 import RootModule from './modules/root/root-module'
 import type { IRootState } from './modules/root/types'
 
 export const store = createStore<IRootState>(RootModule)
 
 type StoreModules = {
-	devices: IDevicesModule
+	devices: IDevicesModule,
+	patients: IPatientsModule
 }
 
 //! README
@@ -28,4 +30,5 @@ type StoreModules = {
  *
  * ? For more on Vuex: https://vuex.vuejs.org/
  */
-export type Store = IDevicesModule<Pick<StoreModules, 'devices'>>
+export type Device = IDevicesModule<Pick<StoreModules, 'devices'>>
+export type Patient = IPatientsModule<Pick<StoreModules, 'patients'>>

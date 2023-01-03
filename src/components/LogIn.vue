@@ -19,7 +19,11 @@
 <script lang="ts" >
 import axios from 'axios'
 import router from 'vue-router'
-    
+import { setCookie } from 'tiny-cookie';
+
+
+
+ 
 export default {
     name: 'SoftwareEngineeringAssessmentTaskLoginPage',
 
@@ -29,7 +33,7 @@ export default {
                 identity:'',
                 password:''
             },
-            Token:'',
+            //token: token
         };
     },
 
@@ -54,14 +58,14 @@ export default {
                 alert('Password must be at least 8 character long'); // check password is greater the=an 8 character
                 return;
             }
-
+        
             else {
                 axios.post('http://23.94.211.99:8090/api/collections/candidates/auth-with-password',this.userData) //Login API call from here
                     .then((response)=>{
                         console.log(response)
-                        this.Token = response.data.token
-                        //console.log(this.$router)
-                        console.log(this.Token);
+                        let  token = response.data.token
+                        setCookie('token', token)
+                        
                         this.$toast.show(`Successfully Login!!!`);
 
                         this.$router.push("/home")
