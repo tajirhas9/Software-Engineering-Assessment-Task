@@ -18,8 +18,8 @@
 </template>
 
 <script>
-	let namo = 'dhur'
-	let arr = ['a', 'b', 'c']
+	let name = ['Rafi', 'asif']
+	let selected = 'None'
 	import DeviceList from '@/components/DeviceList.vue'
 	import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
@@ -45,7 +45,7 @@
 		name: 'App',
 		data() {
 			return {
-				name: 'Rafo',
+				arr: [],
 				TableHtml: `<h1 style="color: white">
 						<table border=1>
 							<tr>
@@ -60,17 +60,17 @@
 								</th>
 							</tr>
 							<tr>
-								<td>Rafi </td>
+								<td>${name[0]} </td>
 								<td> 123@gmail.com </td>
 								<td> 0162762 </td>
 							</tr>
 							<tr>
-							<td> Second Patient </td>
+							<td> ${name[1]} </td>
 								<td> example@gmail.com </td>
 								<td> 01712233367 </td>
 								</tr>
 								</h1> `,
-				GotHtml: '<h1 style="color: white"> This Patient is selected</h1>',
+				GotHtml: `<h1 style="color: white"> This Patient is ${selected}</h1>`,
 				HeadHtml: `<h1 style="color:white"><p align="center"> Welcome to Software Engineer Technical Assessment</p></h1>`,
 			}
 		},
@@ -79,14 +79,19 @@
 				let result = await axios
 					.get('http://localhost:3000/patients/records')
 					.then((res) => {
-						console.warn(res.data[0].name)
+						for (let i in res.data) {
+							//console.warn(res.data[i].name)
+							this.arr.push(res.data[i].name)
+							console.warn(this.arr[0])
+						}
 					})
 					.catch((err) => {
 						console.warn(err)
 					})
-				for (let i in result) {
-					console.warn(i.name)
-				}
+			},
+
+			logout() {
+				console.warn('logout')
 			},
 		},
 		beforeMount() {
@@ -99,7 +104,7 @@
 	body,
 	html {
 		height: 100%;
-		widows: 100%;
+		width: 100%;
 	}
 	body {
 		background-color: black;
