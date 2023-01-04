@@ -6,8 +6,8 @@
 			<button @click="load" v-else>Load Devices</button>
 		</div>-->
 		<div>
-			<ifrmae src="http://127.0.0.1:5500/patients/index.html"></ifrmae>
-			<iframe src="http://127.0.0.1:5500/banner/index.html"></iframe>
+			<iframe src="src/Old Codebase/patients/index.html" frameborder="0"></iframe>
+			<iframe src="src/Old Codebase/banner/index.html" frameborder="0"></iframe>
 		</div>
 	</main>
 </template>
@@ -17,7 +17,23 @@
 	//import { DevicesModuleAction } from '@/store/modules/devices/types'
 	import { computed } from 'vue'
 	import { useStore } from 'vuex'
+	import axios from 'axios'
+	import {setCookie,getCookie } from 'tiny-cookie';
+	import { stringify } from 'querystring';
+	import { json } from 'stream/consumers';
 
+	let patienttoken={
+		headers:{
+		Authorization: 'Bearer ' + getCookie('Token')
+		}
+	}
+	axios.get('http://23.94.211.99:8090/api/collections/patients/records',patienttoken)
+	.then(response=>{
+		const Items=response.data.items
+		setCookie('Items',JSON.stringify(Items))
+		//console.log(response.data.items)
+	})
+	.catch((e)=>console.log(e))
 	//let store = useStore()
 
 	//let devices = computed(() => store.getters.devices)

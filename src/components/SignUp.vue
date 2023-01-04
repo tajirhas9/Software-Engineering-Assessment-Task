@@ -50,7 +50,7 @@ export default {
           console.log(response)
           this.$router.push("/login")
         })
-      .catch((e)=> {
+        .catch((e)=> {
           console.log(e)
           alert("Invalid Email or Already Used")
       })

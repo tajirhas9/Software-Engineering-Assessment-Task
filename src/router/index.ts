@@ -14,13 +14,13 @@ const router = createRouter({
 		},
 
 		{
-			path: '/Login',
+			path: '/login',
 			name: 'Login',
 			component: LogIn,
 		},
 
 		{
-			path: '/SignUp',
+			path: '/signup',
 			name: 'SignUp',
 			component: SignUp,
 		},

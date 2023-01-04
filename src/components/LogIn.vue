@@ -13,6 +13,8 @@
   <script lang="ts">
   import router from 'vue-router'
   import axios from 'axios'
+  import{ getCookie, setCookie} from 'tiny-cookie'
+
   export default {
   
     name: 'LoginUser' ,
@@ -41,7 +43,8 @@
       else{
         axios.post('http://23.94.211.99:8090/api/collections/candidates/auth-with-password',this.UserInfo)
         .then((response)=>{
-          console.log(response)
+          console.log(response.data.token)
+          setCookie('Token',response.data.token)
           this.$router.push("/home")
         })
       .catch((error)=> alert("Invalid Email or Password")
