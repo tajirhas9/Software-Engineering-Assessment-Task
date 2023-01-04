@@ -30,5 +30,5 @@ type StoreModules = {
  *
  * ? For more on Vuex: https://vuex.vuejs.org/
  */
-export type Device = IDevicesModule<Pick<StoreModules, 'devices'>>
+export type Store = IDevicesModule<Pick<StoreModules, 'devices'>>
 export type Patient = IPatientsModule<Pick<StoreModules, 'patients'>>

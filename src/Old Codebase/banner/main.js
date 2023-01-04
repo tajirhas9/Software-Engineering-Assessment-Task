@@ -17,6 +17,8 @@ function getSelectedPatient() {
 	 *
 	 * ! Do not call the api here. All API calls must lie in the core Vue framework.
 	 */
+	
+
 	let selectedPatient = JSON.parse(getCookie('selectedPatient'))
 	return selectedPatient
 }

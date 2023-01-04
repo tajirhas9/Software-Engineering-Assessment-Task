@@ -1,6 +1,10 @@
 import { setCookie, getCookie } from 'tiny-cookie';
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import 'https://code.jquery.com/jquery-3.6.3.slim.min.js'
+
+var $ = jQuery.noConflict();
+
 
 $(document).ready(function () {
 	let patients = getPatients()
@@ -34,7 +38,10 @@ function createTable(patients) {
 	return html
 }
 
-function getPatients() {
+
+
+
+export  function getPatients(paitients) {
 	/**
 	 * @returns Patients list
 	 *
@@ -44,13 +51,18 @@ function getPatients() {
 	 *
 	 * ! Do not call any API here. All API calls must lie in the core Vue framework.
 	 *
-	 */
-	
-	const store = useStore()
+	*/
 
-	let patients = computed(() => store.getters.patients)
-	console.log(patients)
-	return patients
+
+	const element = document.getElementById("if2").contentWindow.document.getElementById('patients')
+
+	const createHtml = createTable(paitients)
+
+	console.log("createHtml",createHtml)
+	element.innerHTML = createHtml
+	
+	
+
 }
 
 function setupClickEvent() {
@@ -61,11 +73,14 @@ function setupClickEvent() {
 			email: children[1].innerHTML,
 			phone: children[2].innerHTML,
 		}
-		console.log(selectedPatient)
-		setCookie('selectedPatient', JSON.stringify(selectedPatient))
+		//console.log(selectedPatient)
+		return selectedPatient
+		//setCookie('selectedPatient', JSON.stringify(selectedPatient))
 	})
 
 	/**
 	 * TODO: implement necessary logic to show this patient to banner iFrame
 	 */
 }
+
+

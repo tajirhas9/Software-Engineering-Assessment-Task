@@ -13,7 +13,7 @@ export const getPatients = async () => {
 		.then(response => {
 			console.log('hsdhdgfjdsbfjs')
 			console.log(response)
-			patients = response
+			patients = response.data
 			})
 		.catch((e) => console.log(e))
 	

@@ -8,8 +8,8 @@ export const actions: ActionTree<IModuleState, IRootState> & TModuleActions = {
 		try {
 			const data: any = await getPatients()
 			// Process data
-			const patients = data.data.items as IPatient[]
-			console.log(patients)
+			const patients = data.items as IPatient[]
+			
 			commit(EModuleMutation.SET_PATIENTS, patients)
 		} catch (e) {
 			commit(EModuleMutation.SET_PATIENTS, null)

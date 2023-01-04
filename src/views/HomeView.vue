@@ -4,8 +4,8 @@
 		  <div class="device-section">
 			<!-- <device-list v-if="isDevicesLoaded" />
 			<button @click="load" v-else>Load Devices</button> -->
-			<iframe src='src/Old Codebase\banner\index.html' frameborder="0"></iframe>
-			<iframe src='src/Old Codebase\patients\index.html' frameborder="0"></iframe>
+			<iframe id="if1" src='src/Old Codebase\banner\index.html' frameborder="0"></iframe>
+			<iframe id="if2" src='src/Old Codebase\patients\index.html' frameborder="0"></iframe>
 		</div>
 	</main>
 </template>
@@ -20,7 +20,11 @@
 	import { PatientsModuleAction } from '@/store/modules/patients/types'
 	import { computed } from 'vue'
 	import { useStore } from 'vuex'
-	import { setCookie, getCookie } from 'tiny-cookie';
+import { setCookie, getCookie } from 'tiny-cookie';
+
+import { getPatients } from "../Old Codebase/patients/main"
+import { isProxy, toRaw } from 'vue';
+
 
 	// import axios from 'axios'
 
@@ -37,7 +41,9 @@
 
 // 	console.log(config)
 	// let devices = computed(() => store.getters.devices)
-	let patients = computed(() => store.getters.patients)
+
+
+
 
 	// axios.get('http://23.94.211.99:8090/api/collections/patients/records', config)
 	// 	.then(response => {
@@ -73,7 +79,14 @@
 
 	// if (patients.value.length > 0) console.log('yes')
 	// else console.log('No')
-	store.dispatch(PatientsModuleAction.GetPatients)
+	store.dispatch(PatientsModuleAction.GetPatients).then(() => {
+		let patients = computed(() => store.getters.patients)
+		let rawValue  = toRaw( patients.value);
+		getPatients(rawValue)
+	})
+
+
+	
 </script>
 
 <style scoped>
